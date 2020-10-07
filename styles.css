@@ -1,0 +1,22 @@
+h1 {
+  font-size: 2em; /* 1em = 12pt = 16px */
+  font-family: "Roboto", cursive, sans-serif;
+  color: green
+}
+
+h2 {
+  font-size: 1.5em; /* 1em = 12pt = 16px */
+  font-family: "Roboto", cursive, sans-serif;
+  color: purple
+}
+
+p {
+  font-family: Roboto, Monaco, monospace;
+  color: brown
+}
+
+p.dis {
+	color: gray;
+	font-size: 0.75em;
+	font-style: italic
+}
