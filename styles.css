@@ -1,3 +1,11 @@
+* {
+	font-family: "Roboto"
+}
+
+body {
+	background-color: #333333;
+}
+
 h1 {
   font-size: 2em; /* 1em = 12pt = 16px */
   font-family: "Roboto", cursive, sans-serif;
@@ -12,7 +20,6 @@ h2 {
 
 p {
   font-family: Roboto, Monaco, monospace;
-  color: brown
 }
 
 p.dis {

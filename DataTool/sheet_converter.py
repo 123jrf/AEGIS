@@ -1,4 +1,4 @@
-import bs4
+import bs4, time
 
 with open("input.txt") as f:
     data = f.read()
@@ -21,7 +21,7 @@ html = "<table>"
 
 html += "\n\t<tr>"
 
-for i in ("Rank", "Player", "Wins", "Losses", "Games Played", "",
+for i in ("Rank", "Player", "Wins", "Losses", "Games Played",
           "Score", "Win Rate", "Rating"):
     html += "<th>" + i + "</th>"
 
@@ -32,13 +32,13 @@ rank = 1
 for line in table:
     html += "\n\t<tr><td>" + str(rank) + "</td>"
     for entry in line:
-        html += "<td>" + entry + "</td>"
+        if entry:   html += "<td>" + entry + "</td>"
         
     html += "</tr>"
 
     rank += 1
 
-html += "\n</table>"
+html += "\n</table>\n\n<p>" + "Last updated " + time.strftime("%Y-%m-%d") + ".</p>"
 
 print(html)
 
