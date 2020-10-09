@@ -6,6 +6,8 @@ body {
 	background-color: #333333;
 }
 
+/* ====================================== Headings ============================== */
+
 h1 {
   font-size: 2em; /* 1em = 12pt = 16px */
   font-family: "Roboto", cursive, sans-serif;
@@ -18,6 +20,8 @@ h2 {
   color: #65ff1d
 }
 
+/* ====================================== Paragraphs ============================== */
+
 p {
   font-family: Roboto, Monaco, monospace;
   color:  #138184;
@@ -28,6 +32,19 @@ p.dis {
 	font-size: 0.75em;
 	font-style: italic
 }
+
+a {
+	color: red
+}
+
+/* ====================================== Lists ============================== */
+
+ul {
+  font-family: Roboto, Monaco, monospace;
+  color:  #138184;
+}
+
+/* ====================================== Tables ============================== */
 
 table, th, td {
 	padding: 5px
