@@ -4,7 +4,7 @@ SEASON_TEMPLATE = """<!DOCTYPE html>
 <html>
 <head><title>AEGIS League - {$EventName$}</title>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="/AEGIS/styles.css?version=1" /></head>
+<link rel="stylesheet" href="/AEGIS/styles.css?version=2" /></head>
 	
 <body><h1>AEGIS League {$EventName$}</h1>
 {$EventTable$}
@@ -61,13 +61,14 @@ def gen_season_table(data):
 
                 s = "<td><a class={$cl$} href={$lnk$}>" + entry + "</a></td>"
 
-                s = s.replace("{$cl$}", clas).replace("{$lnk$}", "/index.html")
+                s = s.replace("{$cl$}", clas).replace("{$lnk$}",
+                                                      "/AEGIS/index.html")
 
                 html += s
 
             elif column == 2:   html += "<td class=w>" + entry + "</td>"
             elif column == 3:   html += "<td class=z>" + entry + "</td>"
-            elif column in (4,7):   html += "<td class=r>" + entry + "</td>"
+            elif column in [4]:   html += "<td class=r>" + entry + "</td>"
                 
             else:   html += "<td>" + entry + "</td>"
 

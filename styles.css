@@ -37,6 +37,11 @@ a {
 	color: red
 }
 
+a.n {text-align: left; color: #6161D1; text-decoration: none}
+a.n1 {text-align: left; color: #ffec2c; text-decoration: none}
+a.n2 {text-align: left; color: #aaaaaa; text-decoration: none}
+a.n3 {text-align: left; color: #c99e18; text-decoration: none}
+
 /* ====================================== Lists ============================== */
 
 ul {
@@ -77,11 +82,6 @@ td {
 
 td.l {text-align: left;}
 
-a.n {text-align: left; color: #6161D1; text-decoration: none}
-a.n1 {text-align: left; color: #ffec2c; text-decoration: none}
-a.n2 {text-align: left; color: #aaaaaa; text-decoration: none}
-a.n3 {text-align: left; color: #c99e18; text-decoration: none}
-
-a.w {color: #33bb33}
-a.z {color: #bb3333}
-a.r {color: #999999}
+td.w {color: #33bb33}
+td.z {color: #bb3333}
+td.r {color: #999999}
