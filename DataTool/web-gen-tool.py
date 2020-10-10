@@ -4,11 +4,11 @@ SEASON_TEMPLATE = """<!DOCTYPE html>
 <html>
 <head><title>AEGIS League - {$EventName$}</title>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="/styles.css?version=1" /></head>
+<link rel="stylesheet" href="/AEGIS/styles.css?version=1" /></head>
 	
 <body><h1>AEGIS League {$EventName$}</h1>
 {$EventTable$}
-<p><a href="/index.html">Return to Main Page</a></p>
+<p><a href="/AEGIS/index.html">Return to Main Page</a></p>
 </body>
 </html>
 """
