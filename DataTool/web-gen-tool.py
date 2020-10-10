@@ -61,7 +61,7 @@ def gen_player_table(playername):
         html += "\n<tr>"
         # Event name
         s = "<td class=l><a href={$lnk$}>{$name$}</a></td>".replace(
-            "{$lnk$}", "AEGIS/events/"+event.lower().replace(" ", "-")+".html")
+            "{$lnk$}", "/AEGIS/events/"+event.lower().replace(" ", "-")+".html")
         html += s.replace("{$name$}", event)
         # Place
         html += "<td class=l>" + getrank(ed[0]) + "</td>"
