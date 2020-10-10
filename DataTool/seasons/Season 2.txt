@@ -3,7 +3,7 @@ MarioFanaticXI	4	0
 Nickell	5	3
 Yampy	4	2
 DSXDoubleEdge609	3	1
-BriFox	3	2
+Brifox	3	2
 Nick D.	2	1
 Gojirazard	4	10
 10midgits	2	2

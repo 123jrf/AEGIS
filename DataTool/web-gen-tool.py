@@ -1,3 +1,5 @@
+# (c) 2020 Jesse Forgione
+
 import bs4, glob, json, os, time
 
 SEASON_TEMPLATE = """<!DOCTYPE html>
@@ -16,10 +18,73 @@ SEASON_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+PLAYER_TEMPLATE = """<!DOCTYPE html>
+<html>
+<head><title>AEGIS League - {$PlayerName$}</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/AEGIS/styles.css?version=2" /></head>
+	
+<body><h1>{$PlayerName$}'s Stats</h1>
+<p>{$PlayerStats$}</p>
+
+<h2>Rankings</h2>
+{$PlayerTable$}
+<p><a href="/AEGIS/index.html">Return to Main Page</a></p>
+</body>
+</html>
+"""
+
+def getrank(rank):
+    if rank == 1:   return "1st"
+    elif rank == 2:   return "2nd"
+    elif rank == 3:   return "3rd"
+    else:   return str(rank) + "th"
+
 def make_file_name(dir, name):
     return dir.lower() + os.path.sep + name.replace(" ",'-').lower() + '.html'
 
-def gen_season_table(data):
+# Player table =======================
+
+def gen_player_table(playername):
+    html = "<table>\n<tr>"
+
+    # Header row
+    for i in ("Event", "Rank", "Wins", "Losses", "Games Played", "Win Rate",
+              "Score"):
+        if i in ("Event", "Rank"): html += "<th class=l>" + i + "</th>"         
+        else:   html += "<th>" + i + "</th>"
+    html += "</tr>"
+
+    # Table rows
+    for event in PLAYER_RANKS[playername]:
+        ed = PLAYER_RANKS[playername][event]
+        html += "\n<tr>"
+        # Event name
+        s = "<td class=l><a href={$lnk$}>{$name$}</a></td>".replace(
+            "{$lnk$}", "AEGIS/events/"+event.lower().replace(" ", "-")+".html")
+        html += s.replace("{$name$}", event)
+        # Place
+        html += "<td class=l>" + getrank(ed[0]) + "</td>"
+        # Wins
+        html += "<td class=w>" + ed[2] + "</td>"
+        # Losses
+        html += "<td class=l>" + ed[3] + "</td>"
+        # Games Played
+        html += "<td class=z>" + ed[4] + "</td>"
+        # Win Rate
+        html += "<td>" + ed[5] + "</td>"
+        # Score
+        html += "<td>" + ed[6] + "</td>"
+        
+        html += "</td></tr>"
+
+    html += "\n</table>"
+    
+    return html
+
+# Season table =======================
+
+def gen_season_table(data, eventname):
     html = "<table>\n<tr>"
 
     # Header row
@@ -51,14 +116,28 @@ def gen_season_table(data):
     players.sort(reverse=True)
 
     # Generate table rows
-    rank = 1
+    rank = 0
+
+    prevrate = -1    # for tie-checking
+    ties = 0
 
     for pd in players:
+        if pd[0] == prevrate:   # Tie
+            ties += 1
+        elif ties:  # There was a tie but now back to normal
+            rank += ties + 1
+            ties = 0
+        else:   # Normal
+            rank += 1
+
+        prevrate = pd[0]
+        pd[0] = rank
+        
         column = 0
         html += "\n<tr>"
         
         for entry in pd:
-            if column == 0: html += "<td class=l>" + str(rank) + "</td>"
+            if column == 0: html += "<td class=l>" + getrank(rank) + "</td>"
             elif column == 1: # A name
                 if rank == 1:   clas = 'n1'
                 elif rank == 2:   clas = 'n2'
@@ -67,8 +146,8 @@ def gen_season_table(data):
 
                 s = "<td><a class={$cl$} href={$lnk$}>" + entry + "</a></td>"
 
-                s = s.replace("{$cl$}", clas).replace("{$lnk$}",
-                                                      "/AEGIS/index.html")
+                url = "/AEGIS/player/" + entry.lower().replace(" ","-")+'.html'
+                s = s.replace("{$cl$}", clas).replace("{$lnk$}", url)
 
                 html += s
 
@@ -82,7 +161,13 @@ def gen_season_table(data):
             
         html += "</tr>"
 
-        rank += 1
+        # Add rank for easy lookup
+        global PLAYER_RANKS
+        if pd[1] in PLAYER_RANKS:
+            PLAYER_RANKS[pd[1]][eventname] = pd
+        else:
+            PLAYER_RANKS[pd[1]] = {}
+            PLAYER_RANKS[pd[1]][eventname] = pd
 
     html += "</table>"
 
@@ -94,6 +179,9 @@ VERBOSE = 0
 PLAYERS = {}
 SEASONS = {}
 TOURNEYS = {}
+
+PLAYER_RANKS = {}
+GLOBAL_RANKS = {}
 
 # Get all the data from league seasons
 for season in glob.glob("seasons" + os.path.sep + "*.txt"):
@@ -154,20 +242,84 @@ if VERBOSE:
     print()
     print(SEASONS)
 
-# Create player pages
-for player in PLAYERS:
-    pd = PLAYERS[player]
-
+# Create event pages
 for event in SEASONS:
     ed = SEASONS[event]
     meta = ed[" _$METADATA$_ "]
 
     html = SEASON_TEMPLATE.replace("{$EventName$}", event).replace(
-        "{$EventTable$}", gen_season_table(ed)).replace(
+        "{$EventTable$}", gen_season_table(ed, event)).replace(
             "{$HeaderText$}", meta['header']).replace(
                 "{$BodyText$}", meta['body'])
 
     fn = make_file_name("events", event)
+    with open(fn, 'w') as f:
+        print("Writing", fn)
+        f.write(html)
+
+# Get player global ranks
+grates = []
+
+for player in PLAYERS:
+    pd = PLAYERS[player]
+
+    wins = 0
+    losses = 0
+    for i in pd:
+        wins += pd[i]['wins']
+        losses += pd[i]['losses']
+
+    grates.append([round(wins**2 / (wins + losses), 2), player])
+
+grates.sort(reverse=True)
+
+rank = 0
+prevrate = -1    # for tie-checking
+ties = 0
+
+for i in grates:
+    if i[0] == prevrate:   # Tie
+        ties += 1
+    elif ties:  # There was a tie but now back to normal
+        rank += ties + 1
+        ties = 0
+    else:   # Normal
+        rank += 1
+
+    prevrate = i[0]
+
+    GLOBAL_RANKS[i[1]] = getrank(rank)
+
+# Create player pages
+names = []
+
+for player in PLAYERS:
+    pd = PLAYERS[player]
+
+    wins = 0
+    losses = 0
+    for i in pd:
+        wins += pd[i]['wins']
+        losses += pd[i]['losses']
+
+    stats = "Games Played: " + str(round(wins + losses)) + "<br />"
+    stats += "Wins: " + str(wins) + "<br />"
+    stats += "Losses: " + str(losses) + "<br />"
+    stats += "Win Rate: " + str(round(wins*100 / (wins + losses))) + "%<br />"
+    stats += "Overall Score: {:.2f} <br /><br />".format(
+        round(wins**2 / (wins + losses), 2))
+
+    stats += "Global Rank: " + GLOBAL_RANKS[player]
+
+    html = PLAYER_TEMPLATE.replace("{$PlayerName$}", player).replace(
+        "{$PlayerStats$}", stats).replace("{$PlayerTable$}",
+                                          gen_player_table(player))
+
+    fn = make_file_name("player", player)
+
+    if fn in names: input(fn)
+    else:   names.append(fn)
+    
     with open(fn, 'w') as f:
         print("Writing", fn)
         f.write(html)
