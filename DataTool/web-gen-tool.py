@@ -6,7 +6,10 @@ SEASON_TEMPLATE = """<!DOCTYPE html>
 <meta charset="utf-8" />
 <link rel="stylesheet" href="/AEGIS/styles.css?version=2" /></head>
 	
-<body><h1>AEGIS League {$EventName$}</h1>
+<body><h1>AEGIS League {$EventName$} {$HeaderText$}</h1>
+<p>{$BodyText$}</p>
+
+<h2>{$EventName$} Rankings</h2>
 {$EventTable$}
 <p><a href="/AEGIS/index.html">Return to Main Page</a></p>
 </body>
@@ -28,8 +31,11 @@ def gen_season_table(data):
 
     # Number crunching
     players = []
+
+    keys = list(data)
+    keys.remove(" _$METADATA$_ ")
     
-    for player in list(data):
+    for player in keys:
         wins = data[player]['wins']
         losses = data[player]['losses']
         games = wins + losses
@@ -96,8 +102,17 @@ for season in glob.glob("seasons" + os.path.sep + "*.txt"):
     
     with open(season) as f:
         data = f.read()
+        data, meta = data.split("\n\n")
 
     table = {}
+
+    # Parse metadata
+    md = meta.split("\n")
+    meta = {}
+
+    meta["header"] = md[0]
+    meta["body"] = md[1]
+    table[" _$METADATA$_ "] = meta
 
     for line in data.split("\n"):
         if VERBOSE: print(line)
@@ -145,11 +160,16 @@ for player in PLAYERS:
 
 for event in SEASONS:
     ed = SEASONS[event]
+    meta = ed[" _$METADATA$_ "]
 
     html = SEASON_TEMPLATE.replace("{$EventName$}", event).replace(
-        "{$EventTable$}", gen_season_table(ed))
+        "{$EventTable$}", gen_season_table(ed)).replace(
+            "{$HeaderText$}", meta['header']).replace(
+                "{$BodyText$}", meta['body'])
 
     fn = make_file_name("events", event)
     with open(fn, 'w') as f:
         print("Writing", fn)
         f.write(html)
+
+input("\nDone")
