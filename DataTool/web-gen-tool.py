@@ -35,9 +35,10 @@ PLAYER_TEMPLATE = """<!DOCTYPE html>
 """
 
 def getrank(rank):
-    if rank == 1:   return "1st"
-    elif rank == 2:   return "2nd"
-    elif rank == 3:   return "3rd"
+    if rank > 10 and rank < 20: return str(rank) + "th"
+    elif str(rank)[-1] == '1':   return str(rank) + "st"
+    elif str(rank)[-1] == '2':   return str(rank) + "nd"
+    elif str(rank)[-1] == '3':   return str(rank) + "rd"
     else:   return str(rank) + "th"
 
 def make_file_name(dir, name):
@@ -259,12 +260,12 @@ for event in SEASONS:
 
     # Make index page
     if event == "Season 3":
-        print("index.html")
+        print("Writing index.html")
 
         with open("index-template.html", 'r') as f:
             index = f.read()
 
-        with open('Writing index.html', 'w') as f:
+        with open('index.html', 'w') as f:
             f.write(index.replace("<!-- TABLE -->",
                                   gen_season_table(ed, event)))
 
