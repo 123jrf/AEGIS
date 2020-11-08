@@ -257,6 +257,17 @@ for event in SEASONS:
         print("Writing", fn)
         f.write(html)
 
+    # Make index page
+    if event == "Season 3":
+        print("index.html")
+
+        with open("index-template.html", 'r') as f:
+            index = f.read()
+
+        with open('Writing index.html', 'w') as f:
+            f.write(index.replace("<!-- TABLE -->",
+                                  gen_season_table(ed, event)))
+
 # Get player global ranks
 grates = []
 
