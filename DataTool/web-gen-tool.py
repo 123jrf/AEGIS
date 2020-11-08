@@ -13,10 +13,11 @@ SEASON_TEMPLATE = """<!DOCTYPE html>
 
 <h2>{$EventName$} Rankings</h2>
 {$EventTable$}
+<p class="dis">Last updated %DATE%.</p>
 <p><a href="/AEGIS/index.html">Return to Main Page</a></p>
 </body>
 </html>
-"""
+""".replace("%DATE%", time.strftime("%Y-%m-%d"))
 
 PLAYER_TEMPLATE = """<!DOCTYPE html>
 <html>
@@ -29,10 +30,11 @@ PLAYER_TEMPLATE = """<!DOCTYPE html>
 
 <h2>Rankings</h2>
 {$PlayerTable$}
+<p class="dis">Last updated %DATE%.</p>
 <p><a href="/AEGIS/index.html">Return to Main Page</a></p>
 </body>
 </html>
-"""
+""".replace("%DATE%", time.strftime("%Y-%m-%d"))
 
 def getrank(rank):
     if rank > 10 and rank < 20: return str(rank) + "th"
@@ -263,7 +265,7 @@ for event in SEASONS:
         print("Writing index.html")
 
         with open("index-template.html", 'r') as f:
-            index = f.read()
+            index = f.read().replace("%DATE%", time.strftime("%Y-%m-%d"))
 
         with open('index.html', 'w') as f:
             f.write(index.replace("<!-- TABLE -->",
