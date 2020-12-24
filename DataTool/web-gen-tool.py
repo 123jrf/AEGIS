@@ -71,9 +71,9 @@ def gen_player_table(playername):
         # Wins
         html += "<td class=w>" + ed[2] + "</td>"
         # Losses
-        html += "<td class=l>" + ed[3] + "</td>"
+        html += "<td class=z>" + ed[3] + "</td>"
         # Games Played
-        html += "<td class=z>" + ed[4] + "</td>"
+        html += "<td class=l>" + ed[4] + "</td>"
         # Win Rate
         html += "<td>" + ed[5] + "</td>"
         # Score
