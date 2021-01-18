@@ -11,26 +11,35 @@ body {
 h1 {
   font-size: 2em; /* 1em = 12pt = 16px */
   font-family: "Roboto", cursive, sans-serif;
-  color: white;
+  color: #138184;
 }
 
 h2 {
   font-size: 1.5em; /* 1em = 12pt = 16px */
   font-family: "Roboto", cursive, sans-serif;
-  color: #65ff1d
+  color: red;
+}
+
+h3 {
+	color: blue;
 }
 
 /* ====================================== Paragraphs ============================== */
 
 p {
   font-family: Roboto, Monaco, monospace;
-  color:  #138184;
+  color:  #AAAABB;
 }
 
 p.dis {
 	color: gray;
 	font-size: 0.75em;
 	font-style: italic
+}
+
+span.strong {
+	color: white;
+	font-weight: bold;
 }
 
 a {
@@ -46,7 +55,7 @@ a.n3 {text-align: left; color: #c99e18; text-decoration: none}
 
 ul {
   font-family: Roboto, Monaco, monospace;
-  color:  #138184;
+  color:  #AAAABB;
 }
 
 /* ====================================== Tables ============================== */
