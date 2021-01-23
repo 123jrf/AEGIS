@@ -112,9 +112,10 @@ def gen_season_table(data, eventname):
         
         score = round(rate * wins, 2)
         rate = round(rate*100)    # make percentage
-        
-        players.append([score, player, str(wins), str(losses), str(games),
-                        str(rate)+'%','{:.2f}'.format(score)])
+
+        if games > 1:
+            players.append([score, player, str(wins), str(losses), str(games),
+                            str(rate)+'%','{:.2f}'.format(score)])
 
     players.sort(reverse=True)
 
@@ -135,7 +136,8 @@ def gen_season_table(data, eventname):
 
         prevrate = pd[0]
         pd[0] = rank
-        
+
+        # Generate html table
         column = 0
         html += "\n<tr>"
         
@@ -220,7 +222,8 @@ for season in glob.glob("seasons" + os.path.sep + "*.txt"):
                 name = entry
                 form.pop(0)
 
-        table[name] = row
+        if row['wins'] > 0 or row['wins'] + row['losses'] > 2:
+            table[name] = row
         if VERBOSE: print(row)
 
 
@@ -229,7 +232,7 @@ for season in glob.glob("seasons" + os.path.sep + "*.txt"):
             'wins': row['wins'],
             'losses': row['losses'],
             }
-        
+
         if name in PLAYERS:
             PLAYERS[name][sname] = listing
                                
@@ -267,9 +270,12 @@ for event in SEASONS:
         with open("index-template.html", 'r') as f:
             index = f.read().replace("%DATE%", time.strftime("%Y-%m-%d"))
 
+            if False:   # Write index?
+                index = index.replace("<!-- TABLE -->",
+                                      gen_season_table(ed, event))
+
         with open('index.html', 'w') as f:
-            f.write(index.replace("<!-- TABLE -->",
-                                  gen_season_table(ed, event)))
+            f.write(index)
 
 # Get player global ranks
 grates = []
@@ -325,9 +331,10 @@ for player in PLAYERS:
 
     stats += "Global Rank: " + GLOBAL_RANKS[player]
 
-    html = PLAYER_TEMPLATE.replace("{$PlayerName$}", player).replace(
-        "{$PlayerStats$}", stats).replace("{$PlayerTable$}",
-                                          gen_player_table(player))
+    if player in PLAYER_RANKS:
+        html = PLAYER_TEMPLATE.replace("{$PlayerName$}", player).replace(
+            "{$PlayerStats$}", stats).replace("{$PlayerTable$}",
+                                              gen_player_table(player))
 
     fn = make_file_name("player", player)
 

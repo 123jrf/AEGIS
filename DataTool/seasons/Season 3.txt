@@ -1,4 +1,4 @@
-epicimpulse	8	1
+epicimpulse	9	1
 Dars D. Overdrive	19	7
 HanBanan	4	10
 Yampy	4	11
@@ -29,7 +29,7 @@ thewaterlilies	0	2
 Manthany Manford	0	1
 DSXDoubleEdge609	3	2
 six.dy	2	3
-Chaoslad	0	1
+Chaoslad	0	2
 
-(September - December 2020)
-Season 3 ends on January 1st. Anyone who participates will get a special promo card mailed to them at the end of the season. In addition, the top league players will be invited to participate in a tournament at the end of the season with cash (gift card) prizes.
+(September - January 2021)
+Season 3 saw the rise of many new robots and strategies as development on AEGIS 2 continued.

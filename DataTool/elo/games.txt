@@ -1,0 +1,47 @@
+epicimpulse	Gojirazard	2	0
+Gojirazard	epicimpulse	0	2
+Brifox	Tayler Morris (Taymo)	0	1
+TD260	Goji/Epic/Retired Champion	0	1
+epicimpulse	Gojirazard, TD260, baconinator	1	0
+Gojirazard	epicimpulse, TD260, Baconator	0	1
+Gojirazard	Baconator	1	0
+Lucid Oblivion	Gojirazard	0	2
+Leighton Reopelle/Coffeedragon	Allen McBee/rosheka	1	1
+Leighton Reopelle/Coffeedragon	Richard Needham	1	0
+Leighton Reopelle/Coffeedragon	Richard Needham	0	1
+Gojirazard	LucidOblivion	2	0
+Gojirazard	Nickell	1	2
+Brifox	Taymo	1	0
+six.dy	DSXDoubleEdge609	0	1
+DSXDoubleEdge609	six.dy	1	0
+Nickell	Gojirazard	2	1
+Nickell	Keegan	1	1
+MarioFanaticXV	N/A	1	0
+Brifox	Taymo	1	0
+six.dy	DSXDoubleEdge609	1	0
+DSXDoubleEdge609	six.dy	0	1
+Gojirazard	epicimpulse	0	1
+Gojirazard	TD260	0	1
+TD260	Gojirazard	1	0
+six.dy	DSXDoubleEdge609	0	1
+DSXDoubleEdge609	six.dy	1	0
+MarioFanaticXV	N/A	1	0
+MarioFanaticXV	da3dalus.bat	1	0
+MarioFanaticXV	da3dalus.bat	1	0
+Goji	epicimpulse	0	1
+epicimpulse	Gojirazard	1	0
+epicimpulse	Brzzzz	1	0
+Nickell	Nick D.	1	2
+Nickell	Rohan	1	0
+Nickell	Sarah	1	0
+Nickell	Shaun/ Koby	0	1
+Nickell	Keegan	1	0
+six.dy	DSXDoubleEdge609	0	1
+DSXDoubleEdge609	six.dy	1	0
+Yampy	J.G.	1	0
+Yampy	Gojirazard	2	0
+TD260	Shawn	1	0
+TD260	Warsworth	0	1
+Ballistic barracuda	TD260	0	1
+Brifox	Breeze	1	0
+epicimpulse	Brifox	1	0
