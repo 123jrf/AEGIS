@@ -41,15 +41,16 @@ def EloRating(Ra, Rb, K, d):
     print("Ra =", round(Ra, 6)," Rb =", round(Rb, 6)) 
   
 # Driver code 
-  
-# Ra and Rb are current ELO ratings 
-Ra = int(input("Rating 1: "))
-Rb = int(input("Rating 2: "))
-K = 30
-d = int(input("1 for player 1 wins, -1 for player 2: "))
-EloRating(Ra, Rb, K, d) 
+ 
+while 1:
+	# Ra and Rb are current ELO ratings 
+	Ra = int(input("Rating 1: "))
+	Rb = int(input("Rating 2: "))
+	K = 30
+	d = int(input("1 for player 1 wins, -1 for player 2: "))
+	EloRating(Ra, Rb, K, d) 
 
-input()
+	input()
   
 # This code is contributed by 
 # Smitha Dinesh Semwal 
