@@ -1,12 +1,12 @@
-Epic	1814
-Goji	1786
-Brifox	1763
-TD	1737
-Nickell	1602
-Yampy	1497
-Dars	1429
-Train	1371
-Lucid	1367
-Kawaii	1363
-Chaos	1297
-Zasabi	1271
+Epic	1814		3
+Goji	1786		3
+Brifox	1763		2
+TD	1737		2
+Nickell	1603		3
+Yampy	1486		6
+Dars	1429		2
+Train	1393		4
+Lucid	1367		5
+Kawaii	1363		4
+Zasabi	1281		5
+Chaos	1274		5
