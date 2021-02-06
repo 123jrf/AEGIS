@@ -1,11 +1,11 @@
 Epic	1814		3
-Goji	1786		3
+Goji	1792		5
 Brifox	1763		2
 TD	1737		2
-Nickell	1603		3
+Nickell	1561		5
 Yampy	1486		6
-Dars	1429		2
-Train	1393		4
+Dars	1471		4
+Train	1387		6
 Lucid	1367		5
 Kawaii	1363		4
 Zasabi	1281		5
