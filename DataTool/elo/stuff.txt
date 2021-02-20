@@ -1,10 +1,10 @@
-Epic	1821		6
 Goji	1796		7
-Brifox	1763		2
+Epic	1769		8
+Brifox	1714		4
 TD	1730		5
-Nickell	1575		7
-Dars	1491		6
-Yampy	1486		6
+Nickell	1584		10
+Dars	1542		8
+Yampy	1526		11
 Train	1387		6
 Lucid	1353		7
 Kawaii	1339		8
