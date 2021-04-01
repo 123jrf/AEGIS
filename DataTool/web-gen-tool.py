@@ -264,7 +264,7 @@ for event in SEASONS:
         f.write(html)
 
     # Make index page
-    if event == "Season 3":
+    if event == "Season 4":
         print("Writing index.html")
 
         with open("index-template.html", 'r') as f:

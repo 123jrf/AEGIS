@@ -1,9 +1,9 @@
-Goji	1796		7
-Epic	1769		8
+Goji	1772		10
+Epic	1753		11
+TD	1730		12
 Brifox	1714		4
-TD	1730		5
 Nickell	1584		10
-Dars	1542		8
+Dars	1583		11
 Yampy	1526		11
 Train	1387		6
 Lucid	1353		7
