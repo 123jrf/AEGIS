@@ -32,4 +32,4 @@ six.dy	2	3
 Chaoslad	0	2
 
 (September - January 2021)
-Season 3 saw the rise of many new robots and strategies as development on AEGIS 2 continued. The season concluded with the <a href="winter2021">2021 Winter Tournament</a>.
+Season 3 saw the rise of many new robots and strategies as development on AEGIS 2 continued. The season concluded with the <a href="/AEGIS/events/winter2021.html">2021 Winter Tournament</a>.
