@@ -263,6 +263,7 @@ for event in SEASONS:
         print("Writing", fn)
         f.write(html)
 
+    print('|',event,'|')
     # Make index page
     if event == "Season 4":
         print("Writing index.html")
@@ -270,7 +271,7 @@ for event in SEASONS:
         with open("index-template.html", 'r') as f:
             index = f.read().replace("%DATE%", time.strftime("%Y-%m-%d"))
 
-            if False:   # Write index?
+            if True:   # Write index?
                 index = index.replace("<!-- TABLE -->",
                                       gen_season_table(ed, event))
 
