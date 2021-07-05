@@ -4,7 +4,7 @@ Breeze	1	3
 Chaoslad	0	2
 TD260	1	1
 Epicimpulse	3	1
-MarioFanaticXVI	0	1
+MarioFanaticXV	0	1
 
 (April - July 2021)
 With plenty of fresh balance tweaks after the 2021 Winter Tournament, the new AEGIS League season promises the best AEGIS 1 and 2 experience yet!
